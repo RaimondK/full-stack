@@ -14,8 +14,8 @@
 
 .column-m {
   float: left;
-  width: 30%;
-  padding: 5px 5px 5px 20px;
+  width: 25%;
+  padding: 10px 10px 10px 25px;
 }
 
 body{
@@ -59,7 +59,7 @@ p{
 }
 
 h1,h2,h3,h4,h5,h6{
-  color:#333;
+  color: #222225;
   font-weight:700;
   margin:0;
   line-height:1.2
@@ -140,7 +140,7 @@ aside.menu-sidebar.d-none.d-lg-block.clr{
  */
 
 .header-desktop{
-  background: #222225;
+  background: #a1a1a1;
   -webkit-box-shadow:0 2px 5px 0 rgba(0,0,0,.1);
   -moz-box-shadow:0 2px 5px 0 rgba(0,0,0,.1);
   box-shadow:0 2px 5px 0 rgba(0,0,0,.1);
@@ -1035,9 +1035,8 @@ footer ul li{
     padding-left:12px
   }
   .header-mobile .header-mobile-bar{
-    padding:6px 0;
+    padding:6px;
     background:#fff;
     border:0;
-    padding:8px 0
   }
 }

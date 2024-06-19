@@ -4,7 +4,7 @@
       <div class="row">
         <div *ngFor="let tempProduct of products" class="column-m">
           <div class="product-box">
-            <img ngSrc="{{ tempProduct.imageUrl }}" height="100" width="100" alt="">
+            <img src="{{ tempProduct.imageUrl }}" alt="">
             <h1> {{ tempProduct.name }} </h1>
             <div class="price">{{ tempProduct.price | currency: 'EUR' }}</div>
             <a href="#" class="primary-btn">Add to cart</a>

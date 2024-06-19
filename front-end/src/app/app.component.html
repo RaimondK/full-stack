@@ -1,8 +1,8 @@
 <div class="page-wrapper">
 
   <aside class="menu-sidebar d-none d-lg-block">
-    <div class="logo">
-      <a href="#">
+    <div class="logo" >
+      <a href="http://localhost:4200">
         <img src="/assets/images/logo.png" alt="rkfullstack" class="img-responsive">
       </a>
     </div>
@@ -10,16 +10,10 @@
       <nav class="navbar-sidebar">
         <ul class="list-unstyled navbar-list">
           <li>
-            <a href="#">Books</a>
+            <a routerLink="/category/1" routerLinkActive="active-link">Books</a>
           </li>
           <li>
-            <a href="#">Photos</a>
-          </li>
-          <li>
-            <a href="#">Mouse Pads</a>
-          </li>
-          <li>
-            <a href="#">Other</a>
+            <a routerLink="/category/2" routerLinkActive="active-link">Photos</a>
           </li>
         </ul>
       </nav>
@@ -41,9 +35,9 @@
             </form>
             <div class="cart-area d-n">
               <a href="shopping-detail.html">
-                <div class="total">19.22 <span> 2</span></div>
-                <i class="fa fa-shopping-cart"
-                   aria-hidden="true"></i>
+                <div class="total">19.99 <span> 1</span></div>
+                <i class="fa-solid fa-cart-shopping"
+                   aria-hidden="false"></i>
               </a>
             </div>
           </div>
@@ -52,7 +46,7 @@
       </div>
     </header>
 
-    <app-product-list></app-product-list>
+    <router-outlet></router-outlet>
 
   </div>
 </div>
