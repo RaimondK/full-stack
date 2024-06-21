@@ -13,7 +13,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.css" media="all">
 
   <!-- Main CSS-->
-  <link href="/src/styles.css" rel="stylesheet" media="all">
+  <link href="/styles.css" rel="stylesheet" media="all">
 
   <link rel="icon" href="/assets/favicon.ico">
 </head>
@@ -38,13 +38,7 @@
       <div class="section-content section-content-p30">
         <div class="container-fluid">
           <div class="header-wrap">
-            <form class="form-header" onsubmit="return false;" method="GET">
-              <input class="au-input au-input-xl" type="text" name="search"
-                     placeholder="Search for data ..."/>
-              <button class="au-btn-submit" type="submit">
-                Search
-              </button>
-            </form>
+              <app-search></app-search>
             <div class="cart-area d-n">
               <a href="#">
                 <div class="total">19.99 <span> 1 </span></div>
