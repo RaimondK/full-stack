@@ -11,8 +11,14 @@ import {ActivatedRoute} from "@angular/router";
 export class ProductListComponent {
   products: Product[] = [];
   currentCategoryId: number = 1;
+  previousCategoryId: number = 1;
   currentCategoryName: string = "";
   searchMode: boolean = false;
+  pageNumber: number = 1;
+  pageSize: number = 5;
+  totalElements: number = 0;
+  previousKeyword: string = "";
+
 
   constructor(private productService: ProductService,
               private route: ActivatedRoute) {
@@ -41,26 +47,53 @@ export class ProductListComponent {
 
     if (hasCategoryId) {
       this.currentCategoryId = +this.route.snapshot.paramMap.get('id')!;
-      this.currentCategoryName = this.route.snapshot.paramMap.get('name')!;
     } else {
       this.currentCategoryId = 1;
-      this.currentCategoryName = 'Books';
     }
 
-    this.productService.getProductList(this.currentCategoryId).subscribe(
-      data => {
-        this.products = data;
-      }
-    );
+    if (this.previousCategoryId != this.currentCategoryId) {
+      this.pageNumber = 1;
+    }
+
+    this.previousCategoryId = this.currentCategoryId;
+    console.log(`categoryId=${this.currentCategoryId}, pageNumber=${this.pageNumber}`)
+
+    this.productService.getPagination(this.pageNumber - 1, this.pageSize, this.currentCategoryId).subscribe(this.processResult());
+    console.log(`Received page: ${this.pageNumber}, size: ${this.pageSize}, total elements: ${this.totalElements}`);
   }
 
   private handleSearchProducts() {
     const keyword = this.route.snapshot.paramMap.get('keyword')!;
 
-    this.productService.searchProducts(keyword).subscribe(
-      data => {
-        this.products = data;
-      }
-    )
+    if (this.previousKeyword != keyword) {
+      this.pageNumber = 1;
+    }
+
+    this.previousKeyword = keyword;
+
+    console.log(`keyword=${keyword}, pageNumber=${this.pageNumber}`);
+
+    this.productService.getSearchPagination(this.pageNumber - 1, this.pageSize, keyword).subscribe(this.processResult());
+    console.log(`Received page: ${this.pageNumber}, size: ${this.pageSize}, total elements: ${this.totalElements}`);
+  }
+
+  updatePageSize(pageSize: string) {
+    this.pageSize = +pageSize;
+    this.pageNumber = 1;
+    console.log(`Updating page size to: ${this.pageSize}`);
+    this.listProducts();
+  }
+
+  processResult() {
+    return (data: any) => {
+      this.products = data._embedded.products;
+      this.pageNumber = data.page.number + 1;
+      this.pageSize = data.page.size;
+      this.totalElements = data.page.totalElements;
+    };
+  }
+
+  addToCart(tempProduct: Product) {
+    console.log(`Adding product to cart: ${tempProduct.name}, ${tempProduct.price}`)
   }
 }

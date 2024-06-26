@@ -12,14 +12,41 @@
               <h1> {{ tempProduct.name }} </h1>
             </a>
             <div class="price">{{ tempProduct.price | currency: 'EUR' }}</div>
-            <a href="#" class="primary-btn">
+            <button (click)="addToCart(tempProduct)" class="btn btn-primary btn-sm">
               Add to cart
               <i class="fa-solid fa-sack-dollar"></i>
-            </a>
+            </button>
           </div>
         </div>
         <div *ngIf="products?.length == 0" class="alert alert-danger cold-md-12" role="alert">
           No products were found!
+        </div>
+      </div>
+      <div class="footer-pagination">
+        <div class="row">
+          <div class="col-md-6"></div>
+          <div class="col-md-6">
+            <div class="row">
+              <div class="col-md-6" style="padding-left: 25%">
+                <ngb-pagination [(page)]="pageNumber"
+                                [pageSize]="pageSize"
+                                [collectionSize]="totalElements"
+                                [maxSize]="3"
+                                [boundaryLinks]="true"
+                                (pageChange)="listProducts()">
+                </ngb-pagination>
+              </div>
+              <div class="col-md-6" style="text-align: right">
+                <span class="me-2">Page size: </span>
+                  <select #pageSelection (change)="updatePageSize(pageSelection.value)" style="height: 35px">
+                    <option selected="selected">5</option>
+                    <option>10</option>
+                    <option>20</option>
+                    <option>50</option>
+                  </select>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
