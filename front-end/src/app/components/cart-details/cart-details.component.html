@@ -39,7 +39,7 @@
                 </div>
               </div>
               <div class="col">
-              <button (click)="remove(shoppingCart)" class="btn btn-primary btn-sm mt-2">Remove</button>
+                <button (click)="remove(shoppingCart)" class="btn btn-primary btn-sm mt-2">Remove</button>
               </div>
               <p class="mt-0">Total: {{ shoppingCart.price * shoppingCart.quantity | currency: 'EUR' }}</p>
             </td>
@@ -49,6 +49,9 @@
             <td style="font-weight: bold">
               <p>Total Quantity: </p>
               <p>Total Price: {{ price | currency: 'EUR' }}</p>
+              <div>
+                <a routerLink="/checkout" class="btn btn-primary btn-sm mt-2">Checkout</a>
+              </div>
             </td>
           </tr>
         </table>

@@ -3,8 +3,10 @@ import {RouterModule, Routes} from '@angular/router';
 import {ProductListComponent} from "./components/product-list/product-list.component";
 import {ProductdetailsComponent} from "./components/productdetails/productdetails.component";
 import {CartDetailsComponent} from "./components/cart-details/cart-details.component";
+import {CheckoutComponent} from "./components/checkout/checkout.component";
 
 const routes: Routes = [
+  {path: 'checkout', component: CheckoutComponent},
   {path: 'cart-details', component: CartDetailsComponent},
   {path: 'products/:id', component: ProductdetailsComponent},
   {path: 'category/:id/:name', component: ProductListComponent},
