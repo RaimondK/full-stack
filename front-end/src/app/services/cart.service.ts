@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import {Subject} from "rxjs";
+import {BehaviorSubject, Subject} from "rxjs";
 import { Cart } from '../common/cart';
 
 @Injectable({
@@ -9,8 +9,8 @@ export class CartService {
 
   cartItems: Cart[] = [];
 
-  totalPrice: Subject<number> = new Subject<number>();
-  totalQuantity: Subject<number> = new Subject<number>();
+  totalPrice: Subject<number> = new BehaviorSubject<number>(0);
+  totalQuantity: Subject<number> = new BehaviorSubject<number>(0);
 
   constructor() { }
 
@@ -52,7 +52,7 @@ export class CartService {
     console.log(`--------------------------------------------`);
   }
 
-  decremenetQuantity(cartItem: Cart) {
+  decrementQuantity(cartItem: Cart) {
     cartItem.quantity--;
     if (cartItem.quantity === 0) {
       this.remove(cartItem);

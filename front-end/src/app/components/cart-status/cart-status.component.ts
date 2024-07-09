@@ -8,7 +8,7 @@ import {CartService} from "../../services/cart.service";
 })
 export class CartStatusComponent implements OnInit {
 
-  totalPrice: number = 0.00;
+  totalPrice: number = 0;
   totalQuantity: number = 0;
 
   constructor(private cartService: CartService) {
