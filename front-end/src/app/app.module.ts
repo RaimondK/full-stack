@@ -20,6 +20,7 @@ import { LoginStatusComponent } from './components/login-status/login-status.com
 import { OKTA_AUTH, OKTA_CONFIG, OktaAuthModule } from '@okta/okta-angular';
 import { OktaAuth } from '@okta/okta-auth-js';
 import AppConfig from "./config/app-config";
+import { VipDiscountsComponent } from './components/vip-discounts/vip-discounts.component';
 
 const oktaConfig = AppConfig.oidc;
 const oktaAuth = new OktaAuth(oktaConfig);
@@ -35,7 +36,8 @@ const oktaAuth = new OktaAuth(oktaConfig);
     CartDetailsComponent,
     CheckoutComponent,
     LoginComponent,
-    LoginStatusComponent
+    LoginStatusComponent,
+    VipDiscountsComponent
   ],
   imports: [
     BrowserModule,
