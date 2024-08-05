@@ -1,9 +1,6 @@
 package com.rk.backend.config;
 
-import com.rk.backend.entity.Country;
-import com.rk.backend.entity.Product;
-import com.rk.backend.entity.ProductCategory;
-import com.rk.backend.entity.State;
+import com.rk.backend.entity.*;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.metamodel.EntityType;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -37,6 +34,7 @@ public class DataRestConfig implements RepositoryRestConfigurer {
         disableHttpMethods(config.getExposureConfiguration().forDomainType(ProductCategory.class), unsupportedActions);
         disableHttpMethods(config.getExposureConfiguration().forDomainType(Country.class), unsupportedActions);
         disableHttpMethods(config.getExposureConfiguration().forDomainType(State.class), unsupportedActions);
+        disableHttpMethods(config.getExposureConfiguration().forDomainType(Order.class), unsupportedActions);
 
         exposeIds(config);
 

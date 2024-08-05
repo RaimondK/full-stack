@@ -8,8 +8,10 @@ import {OktaAuthModule, OktaCallbackComponent, OKTA_CONFIG, OktaAuthGuard} from 
 import {OktaAuth} from '@okta/okta-auth-js';
 import { LoginComponent } from './components/login/login.component';
 import { VipDiscountsComponent } from './components/vip-discounts/vip-discounts.component';
+import { OrderHistoryComponent } from './components/order-history/order-history.component';
 
 const routes: Routes = [
+  {path: 'order-history', component: OrderHistoryComponent, canActivate: [OktaAuthGuard], data: {onAuthRequired: sendToLoginPage}},
   {path: 'vip', component: VipDiscountsComponent, canActivate: [OktaAuthGuard], data: {onAuthRequired: sendToLoginPage}},
   {path: 'login/callback', component: OktaCallbackComponent},
   {path: 'login', component: LoginComponent},
