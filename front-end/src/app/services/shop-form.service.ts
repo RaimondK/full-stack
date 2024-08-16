@@ -3,14 +3,15 @@ import {map, Observable, of} from "rxjs";
 import {HttpClient} from "@angular/common/http";
 import {Country} from "../common/country";
 import {State} from "../common/state";
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ShopFormService {
 
-  private countriesUrl = 'http://localhost:8080/api/countries'
-  private statessUrl = 'http://localhost:8080/api/states'
+  private countriesUrl = environment.rkFullstackUrl + '/countries';
+  private statesUrl = environment.rkFullstackUrl + '/states';
 
   constructor(private httpClient: HttpClient) {
   }
@@ -42,7 +43,7 @@ export class ShopFormService {
   }
 
   getStates(countryCode: string): Observable<State[]> {
-    const searchStatesUrl = `${this.statessUrl}/search/findByCountryCode?code=${countryCode}`;
+    const searchStatesUrl = `${this.statesUrl}/search/findByCountryCode?code=${countryCode}`;
     return this.httpClient.get<GetResponseStates>(searchStatesUrl).pipe(
       map(response => response._embedded.states)
     );
